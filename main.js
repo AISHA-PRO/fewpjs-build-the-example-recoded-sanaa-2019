@@ -6,20 +6,22 @@ const FULL_HEART = '♥'
 
 let modal=document.getElementById("modal").className="hidden";
 let likeIcon = document.querySelectorAll('.like-glyph');
-likeIcon.foreach(e=>{
+likeIcon.forEach(e=>{
   e.addEventListener("click",likeFun);
 });
 
 function likeFun(e){
+  let l = e.target;
+  console.log("hhhhhhhhhhhhhhh");
   mimicServerCall()
   .then(() => {
-    if(e.target.innerHtml==FULL_HEART){
-       e.target.innerHtml = FULL_HEART;
-      e.target.classList.add('.activated-heart');
+    if(l.innerText==FULL_HEART){
+      l.innerText = EMPTY_HEART;
+      l.classList.remove('.activated-heart');
     }
-    else if(e.target.innerHtml==EMPTY_HEART){
-      e.target.innerHtml = FULL_HEART;
-      e.target.classList.add('.activated-heart');
+    else{
+      l.innerText = FULL_HEART;
+      l.classList.add('.activated-heart');
     }
   })
   .catch((error) => {
