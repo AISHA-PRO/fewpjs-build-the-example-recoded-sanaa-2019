@@ -21,6 +21,7 @@ function likeFun(e){
     }
     else{
       l.innerText = FULL_HEART;
+      l.style.color="red";
       l.classList.add('.activated-heart');
     }
   })
